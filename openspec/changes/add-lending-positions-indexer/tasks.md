@@ -54,22 +54,22 @@
 
 ## Phase 3: Repository, Manager, Processor, API
 
-- [ ] 3.1 `internal/repositories/positions`: interface + factory + `postgres/` (pgx); таблица
+- [x] 3.1 `internal/repositories/positions`: interface + factory + `postgres/` (pgx); таблица
       `positions` (история по блокам), индексы, upsert/выборки; миграции в `migrations/postgres`.
-- [ ] 3.2 `internal/managers/positions`: `Manager` с конструктором (инжект `[]protocols.Reader`,
+- [x] 3.2 `internal/managers/positions`: `Manager` с конструктором (инжект `[]protocols.Reader`,
       repository); `UpdateForBlock` — сбор leg-строк по протоколам×кошелькам (строки уже с
       ценами) → сохранение; ограничение конкуррентности, обработка ошибок.
-- [ ] 3.3 `internal/processors/blocks`: драйвер цикла — на новый блок вызывает
+- [x] 3.3 `internal/processors/blocks`: драйвер цикла — на новый блок вызывает
       `Manager.UpdateForBlock` (с учётом `CONFIRMATIONS`), ретраи/backoff.
-- [ ] 3.4 `internal/api/http/servant.go`: chi-роутер + тонкие handlers — `GET /positions?wallet=&protocol=`,
+- [x] 3.4 `internal/api/http/servant.go`: chi-роутер + тонкие handlers — `GET /positions?wallet=&protocol=`,
       `GET /healthz`; маппинг domain-ошибок в HTTP-статусы; сериализация `Position` в JSON.
-- [ ] 3.5 `cmd/positions/{main.go,setup_clients,setup_repositories,setup_managers,setup_processors}.go`:
+- [x] 3.5 `cmd/positions/{main.go,setup_clients,setup_repositories,setup_managers,setup_processors}.go`:
       startup-последовательность ARCH, graceful shutdown.
-- [ ] 3.6 Тесты repository (sqlmock/dockertest) и handlers API.
+- [x] 3.6 Тесты repository (sqlmock/dockertest) и handlers API.
 
 **Quality Gate:**
-- [ ] Миграции применяются на чистой БД
-- [ ] API-handlers покрыты тестами
+- [x] Миграции применяются на чистой БД
+- [x] API-handlers покрыты тестами
 
 ---
 
