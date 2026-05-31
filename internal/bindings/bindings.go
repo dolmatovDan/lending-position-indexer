@@ -20,6 +20,7 @@ import (
 //go:generate sh -c "abigen --abi ../../abi/euler_evault.json --pkg bindings --type EulerEVault --out gen_euler_evault.go"
 //go:generate sh -c "abigen --abi ../../abi/euler_oracle.json --pkg bindings --type EulerOracle --out gen_euler_oracle.go"
 //go:generate sh -c "abigen --abi ../../abi/erc20.json --pkg bindings --type ERC20 --out gen_erc20.go"
+//go:generate sh -c "abigen --abi ../../abi/chainlink_aggregator.json --pkg bindings --type ChainlinkAggregator --out gen_chainlink_aggregator.go"
 
 var (
 	AavePoolABI         abi.ABI
@@ -29,6 +30,7 @@ var (
 	EulerEVaultABI      abi.ABI
 	EulerOracleABI      abi.ABI
 	ERC20ABI            abi.ABI
+	ChainlinkAggregatorABI abi.ABI
 )
 
 func init() {
@@ -39,6 +41,7 @@ func init() {
 	EulerEVaultABI = mustLoad("euler_evault.json")
 	EulerOracleABI = mustLoad("euler_oracle.json")
 	ERC20ABI = mustLoad("erc20.json")
+	ChainlinkAggregatorABI = mustLoad("chainlink_aggregator.json")
 }
 
 func mustLoad(name string) abi.ABI {
