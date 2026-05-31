@@ -25,7 +25,7 @@ type Config struct {
 func MainnetConfig() Config {
 	return Config{
 		PoolAddress:         common.HexToAddress("0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"),
-		DataProviderAddress: common.HexToAddress("0x41393e5e337606dc3821075Af65AeE84D7688CBD"),
+		DataProviderAddress: common.HexToAddress("0x0a16f2FCC0D44FaE41cc54e079281D84A363bECD"),
 		OracleAddress:       common.HexToAddress("0x54586bE62E3c3580375aE3723C145253060Ca0C2"),
 	}
 }

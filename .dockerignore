@@ -1,0 +1,9 @@
+.git
+.env
+.env.local
+bin/
+*.test
+openspec/
+.claude/
+README.md
+scripts/
