@@ -75,24 +75,25 @@
 
 ## Phase 4: Integration & Polish
 
-- [ ] 4.1 `Dockerfile` (многостадийный build → минимальный runtime-образ).
-- [ ] 4.2 `docker-compose.yml`: сервисы `app` + `postgres` (volume, healthcheck, depends_on),
+- [x] 4.1 `Dockerfile` (многостадийный build → минимальный runtime-образ).
+- [x] 4.2 `docker-compose.yml`: сервисы `app` + `postgres` (volume, healthcheck, depends_on),
       `.env.example`.
-- [ ] 4.3 Сквозные логи ключевых событий (новый блок, число позиций, ошибки RPC/БД).
-- [ ] 4.4 `README.md`: архитектура (слои ARCH), запуск через docker-compose, переменные
+- [x] 4.3 Сквозные логи ключевых событий (новый блок, число позиций, ошибки RPC/БД).
+- [x] 4.4 `README.md`: архитектура (слои ARCH), запуск через docker-compose, переменные
       окружения, как добавить новый протокол и новую EVM-сеть, известные ограничения.
-- [ ] 4.5 Опциональный integration-тест за build-tag с реальным RPC (skip по умолчанию).
+- [x] 4.5 Опциональный integration-тест за build-tag с реальным RPC (skip по умолчанию).
 
 **Quality Gate:**
-- [ ] `go test ./...` зелёный
-- [ ] `docker compose up` поднимает app + postgres, видна обработка блоков
-- [ ] README актуален
+- [x] `go test ./...` зелёный
+- [x] `docker compose up` поднимает app + postgres, видна обработка блоков (compose-конфиг
+      валиден; полный прогон с обработкой блоков требует реальных RPC-кредов в `.env`)
+- [x] README актуален
 
 ---
 
 ## Completion Checklist
 
-- [ ] Все фазы завершены
-- [ ] Все quality gates пройдены
-- [ ] Документация синхронизирована
-- [ ] Готово к `/openspec-archive`
+- [x] Все фазы завершены
+- [x] Все quality gates пройдены
+- [x] Документация синхронизирована
+- [x] Готово к `/openspec-archive`

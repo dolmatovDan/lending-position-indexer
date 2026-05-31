@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-positions}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-positions}
+      POSTGRES_DB: ${POSTGRES_DB:-positions}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-positions} -d ${POSTGRES_DB:-positions}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      RPC_WS_URL: ${RPC_WS_URL:-}
+      RPC_HTTP_URL: ${RPC_HTTP_URL:-}
+      WALLETS: ${WALLETS:-}
+      CONFIRMATIONS: ${CONFIRMATIONS:-0}
+      EULER_SUBACCOUNTS_DEPTH: ${EULER_SUBACCOUNTS_DEPTH:-1}
+      DATABASE_URL: ${DATABASE_URL:-postgres://positions:positions@postgres:5432/positions?sslmode=disable}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      HTTP_PORT: ${HTTP_PORT:-8080}
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
